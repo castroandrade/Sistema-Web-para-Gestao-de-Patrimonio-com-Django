@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Dashboard de Patrimônio</h1>
+    
+    <div class="row">
+        <!-- Número total de ativos -->
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Total de Ativos</div>
+                <div class="card-body">
+                    <h2 class="card-title">{{ total_ativos }}</h2>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Valor total do patrimônio -->
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Valor Total do Patrimônio</div>
+                <div class="card-body">
+                    <h2 class="card-title">R$ {{ valor_total_patrimonio }}</h2>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ativos em manutenção -->
+        <div class="col-md-4">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header">Ativos em Manutenção</div>
+                <div class="card-body">
+                    <h2 class="card-title">{{ ativos_manutencao }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Gráfico de distribuição por categoria -->
+    <div class="row">
+        <div class="col-md-6">
+            <canvas id="graficoCategorias"></canvas>
+        </div>
+        
+        <!-- Movimentações recentes -->
+        <div class="col-md-6">
+            <h3>Movimentações Recentes</h3>
+            <ul class="list-group">
+                {% for movimentacao in movimentacoes_recentes %}
+                    <li class="list-group-item">{{ movimentacao.descricao }} - {{ movimentacao.data }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('graficoCategorias').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: {{ categorias_labels|safe }},
+            datasets: [{
+                data: {{ categorias_data|safe }},
+                backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0', '#9966ff']
+            }]
+        }
+    });
+</script>
+
+{% endblock %}

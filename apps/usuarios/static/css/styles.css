@@ -1,0 +1,234 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body-1 {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.body-2 {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  width: 1000px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.form-container {
+  width: 50%;
+  padding: 50px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.logo {
+  width: 185px;
+  height: 50px;
+  margin: 50px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 48px;
+  color: white;
+  font-family: "Didact Gothic";
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 32px;
+  color: #808080;
+  font-family: "Didact Gothic";
+}
+
+p {
+  font-size: 14px;
+  font-weight: 300;
+  color: #666;
+  margin-bottom: 20px;
+  font-family: "Josefin Sans";
+}
+
+input {
+  background-color: #ffffff;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: "Josefin Sans";
+}
+
+button {
+  border-radius: 20px;
+  border: 1px solid #4caf50;
+  background-color: #4caf50;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px 45px;
+  margin-top: 10px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #45a049;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.sign-in-container {
+  background-color: #808080;
+  color: #fff;
+  border-radius: 10px 0 0 10px;
+}
+
+.sign-up-container {
+  background-color: #fff;
+  color: #333;
+  border-radius: 0 10px 10px 0;
+}
+
+.sign-in-button,
+.sign-up-button {
+  background-color: white;
+  color: #808080;
+  border: none;
+}
+
+.sign-up-button-2 {
+  background-color: #808080;
+  color: white;
+  border: none;
+}
+
+.sign-up-button-2:hover {
+  background-color: #292827;
+  color: white;
+  border: none;
+}
+
+.sign-in-container .sign-in-button:hover {
+  background-color: #292827;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.sign-up-container .sign-up-button {
+  color: #808080;
+  background-color: transparent;
+  border: 1px solid #808080;
+}
+
+.sign-up-container .sign-up-button:hover {
+  background-color: #292827;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.sign-up-text {
+  color: white;
+}
+
+.sign-in-text {
+  color: #808080;
+}
+
+.sign-in-container > p {
+  color: #dbdbdb;
+}
+
+.forgot-password {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.forgot-password a {
+  color: white;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos gerais para o contêiner de mensagens */
+.messages {
+  width: 90%;
+  max-width: 500px;
+  margin: 10px auto;
+  text-align: center;
+  font-family: "Josefin Sans";
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* Estilos para cada tipo de mensagem */
+.messages .message {
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Mensagem de sucesso */
+.messages .success {
+  background-color: #4caf50;
+  /* Verde para sucesso */
+}
+
+/* Mensagem de erro */
+.messages .error {
+  background-color: #e74c3c;
+  /* Vermelho para erro */
+}
+
+/* Mensagem de aviso */
+.messages .warning {
+  background-color: #f39c12;
+  /* Laranja para aviso */
+}
+
+/* Mensagem informativa */
+.messages .info {
+  background-color: #3498db;
+  /* Azul para informações */
+}

@@ -1,0 +1,33 @@
+# 🚀 IGNORANDO ARQUIVOS GERADOS PELO PYTHON/DJANGO
+
+# Arquivos de cache do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambiente virtual (não precisa enviar a pasta 'venv')
+venv/
+env/
+
+# Arquivos de log e banco de dados local
+*.log
+db.sqlite3
+*.sqlite3
+
+# Arquivos sensíveis
+.env
+config/settings_local.py
+
+# Arquivos do Django e Migrations
+*.pot
+*.pyc
+*.pyo
+migrations/
+
+# Arquivos do Git
+.git/
+
+# Arquivos gerados por pacotes e dependências do sistema
+node_modules/
+staticfiles/
+media/

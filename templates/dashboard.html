@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Dashboard de Gestão Patrimonial</h2>
+
+    <!-- Estatísticas principais -->
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white shadow p-3">
+                <h5>Total de Bens</h5>
+                <h2>{{ total_bens }}</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-success text-white shadow p-3">
+                <h5>Valor Total do Patrimônio</h5>
+                <h2>R$ {{ valor_total_patrimonio|floatformat:2|intcomma }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gráficos -->
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card shadow p-3">
+                <h5 class="text-center">Distribuição dos Bens por Categoria</h5>
+                <canvas id="graficoCategorias"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow p-3">
+                <h5 class="text-center">Status dos Bens</h5>
+                <canvas id="graficoStatus"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Últimas movimentações -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card shadow p-3">
+                <h5 class="text-center">Últimas Movimentações</h5>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Bem</th>
+                                <th>Origem</th>
+                                <th>Destino</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for mov in movimentacoes_recentes %}
+                            <tr>
+                                <td>{{ mov.bem }}</td>
+                                <td>{{ mov.origem|default:"-" }}</td>
+                                <td>{{ mov.destino|default:"-" }}</td>
+                                <td>{{ mov.data|date:"d/m/Y H:i" }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4" class="text-center">Nenhuma movimentação recente.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Gráfico de Distribuição por Categoria
+    var ctxCategorias = document.getElementById('graficoCategorias').getContext('2d');
+    new Chart(ctxCategorias, {
+        type: 'pie',
+        data: {
+            labels: {{ categorias_labels|safe }},
+            datasets: [{
+                data: {{ categorias_data|safe }},
+                backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745', '#17a2b8']
+            }]
+        }
+    });
+
+    // Gráfico de Status dos Bens
+    var ctxStatus = document.getElementById('graficoStatus').getContext('2d');
+    new Chart(ctxStatus, {
+        type: 'bar',
+        data: {
+            labels: {{ status_labels|safe }},
+            datasets: [{
+                label: 'Quantidade de Bens',  // Adicionando um rótulo para o dataset
+                data: {{ status_data|safe }},
+                backgroundColor: ['#28a745', '#dc3545', '#ffc107']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true, // Certifica-se de exibir a legenda
+                    position: 'top'
+                }
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
+{% endblock %}

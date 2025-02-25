@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Excluir Departamento{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Excluir Departamento</h2>
+    <p>Tem certeza de que deseja excluir o departamento "{{ departamento.nome }}"?</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Confirmar Exclusão</button>
+        <a href="{% url 'departamentos:lista_departamentos' %}" class="btn btn-secondary"><i class="fas fa-times"></i> Cancelar</a>
+    </form>
+</div>
+{% endblock %}
