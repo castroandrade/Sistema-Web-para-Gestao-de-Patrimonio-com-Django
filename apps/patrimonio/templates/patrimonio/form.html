@@ -8,12 +8,58 @@
     <div class="card p-4 shadow">
         <form method="post">
             {% csrf_token %}
+            
+            <!-- Nome do Bem -->
             <div class="mb-3">
-                {{ form.as_p }}
+                {{ form.nome.label_tag }}
+                {{ form.nome }}
             </div>
+
+            <!-- Categoria com botão de adicionar -->
+            <div class="mb-3 d-flex align-items-center">
+                <div class="w-100">
+                    {{ form.categoria.label_tag }}
+                    {{ form.categoria }}
+                </div>
+            </div>
+
+            <!-- Fornecedor com botão de adicionar -->
+            <div class="mb-3 d-flex align-items-center">
+                <div class="w-100">
+                    {{ form.fornecedor.label_tag }}
+                    {{ form.fornecedor }}
+                </div>
+            </div>
+
+            <!-- Departamento com botão de adicionar -->
+            <div class="mb-3 d-flex align-items-center">
+                <div class="w-100">
+                    {{ form.departamento.label_tag }}
+                    {{ form.departamento }}
+                </div>
+            </div>
+
+            <!-- Outros Campos -->
+            <div class="mb-3">
+                {{ form.identificador_rfid.label_tag }}
+                {{ form.identificador_rfid }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.status.label_tag }}
+                {{ form.status }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.data_aquisicao.label_tag }}
+                {{ form.data_aquisicao }}
+            </div>
+
             <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Salvar</button>
             <a href="{% url 'patrimonio:lista_bens' %}" class="btn btn-secondary"><i class="fas fa-times"></i> Cancelar</a>
         </form>
     </div>
 </div>
+
+
 {% endblock %}

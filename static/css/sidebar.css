@@ -147,3 +147,68 @@ body {
 .sidebar.collapsed .sidebar-header h3 {
     display: none;
 }
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 10px;  /* Espaço entre o ícone e o texto */
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-links i {
+    font-size: 16px;
+    width: 20px; /* Garante alinhamento */
+    text-align: center;
+}
+
+/* Estilos gerais para o contêiner de mensagens */
+.messages {
+    width: 90%;
+    max-width: 500px;
+    margin: 10px auto;
+    text-align: center;
+    font-family: "Josefin Sans";
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  
+  /* Estilos para cada tipo de mensagem */
+  .messages .message {
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Mensagem de sucesso */
+  .messages .success {
+    background-color: #4caf50;
+    /* Verde para sucesso */
+  }
+  
+  /* Mensagem de erro */
+  .messages .error {
+    background-color: #e74c3c;
+    /* Vermelho para erro */
+  }
+  
+  /* Mensagem de aviso */
+  .messages .warning {
+    background-color: #f39c12;
+    /* Laranja para aviso */
+  }
+  
+  /* Mensagem informativa */
+  .messages .info {
+    background-color: #3498db;
+    /* Azul para informações */
+  }
+  

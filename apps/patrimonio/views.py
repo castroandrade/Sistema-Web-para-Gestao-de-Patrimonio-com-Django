@@ -1,12 +1,47 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Bem
+from .models import Bem, Categoria
 from .forms import BemForm
 from django.contrib import messages
+from django.db.models import Q
+from apps.departamentos.models import Departamento
 
 def lista_bens(request):
-    """ Lista todos os bens cadastrados """
+    """Listagem de bens patrimoniais com filtros e ordenação"""
     bens = Bem.objects.all()
-    return render(request, "patrimonio/lista.html", {"bens": bens})
+    categorias = Categoria.objects.all()
+    departamentos = Departamento.objects.all()
+
+    # 🔹 Filtro por Categoria
+    categoria_id = request.GET.get("categoria")
+    if categoria_id:
+        bens = bens.filter(categoria_id=categoria_id)
+
+    # 🔹 Filtro por Status
+    status = request.GET.get("status")
+    if status:
+        bens = bens.filter(status=status)
+
+    # 🔹 Filtro por Departamento
+    departamento_id = request.GET.get("departamento")
+    if departamento_id:
+        bens = bens.filter(departamento_id=departamento_id)
+
+    # 🔹 Busca por nome do bem
+    busca = request.GET.get("q")
+    if busca:
+        bens = bens.filter(Q(nome__icontains=busca) | Q(identificador_rfid__icontains=busca))
+
+    # 🔹 Ordenação dinâmica
+    ordenacao = request.GET.get("ordenacao", "nome")  # Padrão: ordenar por nome
+    bens = bens.order_by(ordenacao)
+
+    context = {
+        "bens": bens,
+        "categorias": categorias,
+        "departamentos": departamentos,
+        "ordenacao": ordenacao
+    }
+    return render(request, "patrimonio/lista.html", context)
 
 def criar_bem(request):
     """ Cria um novo bem patrimonial """

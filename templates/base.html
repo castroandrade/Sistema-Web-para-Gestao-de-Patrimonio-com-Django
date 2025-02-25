@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Gestão Patrimonial{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +25,6 @@
             <li><a href="{% url 'fornecedores:lista_fornecedores' %}"><i class="fas fa-truck"></i> Fornecedores</a></li>
             <li><a href="{% url 'movimentacoes:lista_movimentacoes' %}"><i class="fas fa-exchange-alt"></i> Movimentações</a></li>
             <li><a href="{% url 'movimentacoes:lista_historico_status' %}"><i class="fas fa-history"></i> Histórico de Status</a></li>
-
         <div class="sidebar-footer">
             <p>Autênticado como: <strong>{{ user.username }}</strong></p>
             <a href="{% url 'usuarios:logout' %}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
