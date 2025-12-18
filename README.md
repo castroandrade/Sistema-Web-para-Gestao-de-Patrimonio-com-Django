@@ -28,7 +28,7 @@ Este é um **sistema web de gestão de bens patrimoniais** que permite o **rastr
 
 ### 🔹 1. Clone o Repositório
 ```sh
-git clone [https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/castroandrade/Sistema-Web-para-Gestao-de-Patrimonio-com-Django/)
+git clone https://github.com/castroandrade/Sistema-Web-para-Gestao-de-Patrimonio-com-Django
 cd nome-do-repositorio
 ```
 
